@@ -18,7 +18,10 @@ void removeSpecialCharacters(char *test){
 }
 int alreadyHave(char test[MAX][200],char *temp){
     int i;
-    for (i = 0;test[i][0] != '\0';i++) if(strcmp(test[i],temp)==0) return 1;
+    char temp2[200];
+    strcpy(temp2,temp);
+    removeSpecialCharacters(temp2);
+    for (i = 0;test[i][0] != '\0';i++) if(strcmp(test[i],temp2)==0) return 1;
     return 0;
 }
 int checkSpecialCharacter(char test){
@@ -27,9 +30,7 @@ int checkSpecialCharacter(char test){
 }
 void lowercase(char *test){
     int i;
-    for(i = 0;test[i] != '\0';++i){
-        if(test[i] >= 'A' && test[i] <= 'Z') test[i] += 32;
-    }
+    for(i = 0;test[i] != '\0';++i) if(test[i] >= 'A' && test[i] <= 'Z') test[i] += 32;
     return;
 }
 
@@ -37,10 +38,10 @@ int meanninglessWordorNumber(char *test){
     char temp[200], temp2[200];
     strcpy(temp,test);
     lowercase(temp);
+    removeSpecialCharacters(temp);
     FILE *f = fopen("stopw.txt", "r");
     if(!f) exit(1);
     while(fscanf(f, "%s", temp2) == 1){
-        removeSpecialCharacters(temp);
         if(strcmp(temp, temp2)==0){
         fclose(f);
         return 1;
