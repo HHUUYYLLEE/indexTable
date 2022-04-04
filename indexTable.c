@@ -66,7 +66,7 @@ int checkCapital(char *test){
 void indexTable(){
     char words[MAX][200], words2[MAX][200], temp[200], line[500];
     int i = 0,next = 0,a,b,c,d,n,linenumber = 1,count = 0;
-    FILE *f = fopen("vanban.txt", "r");
+    FILE *f = fopen("alice30.txt", "r");
     if(!f) exit(1);
     while(fscanf(f, "%s", temp) == 1){
         if(meanninglessWordorNumber(temp) == 0){
