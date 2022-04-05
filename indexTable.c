@@ -7,7 +7,7 @@ void removeSpecialCharacters(char *test){
     int i,j;
     if(test[strlen(test)-3] == '\'' && test[strlen(test)-2] == 'l' && test[strlen(test)-1] == 'l') test[strlen(test)-3] = '\0';
     for(i = 0;test[i] != '\0';++i){
-        while(!(test[i] >= 'a' && test[i] <= 'z') && !(test[i] >= 'A' && test[i] <= 'Z') && !(test[i] == '\0') && !(test[i] >= '0' && test[i] <= '9')){
+        while(!(test[i] >= 'a' && test[i] <= 'z') && !(test[i] >= 'A' && test[i] <= 'Z') && !(test[i] == '\0') && !(test[i] >= '0' && test[i] <= '9') && test[i] != '-'){
             for(j = i;test[j] != '\0';++j){
                 test[j] = test[j+1];
             }
